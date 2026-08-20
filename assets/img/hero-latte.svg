@@ -1,0 +1,98 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 640" role="img" aria-label="Overhead view of a latte with heart art on a wooden table">
+  <defs>
+    <radialGradient id="crema" cx="42%" cy="36%" r="72%">
+      <stop offset="0%" stop-color="#B07A4C"/>
+      <stop offset="62%" stop-color="#8E5A32"/>
+      <stop offset="100%" stop-color="#6E4324"/>
+    </radialGradient>
+    <linearGradient id="cupRim" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#FFFFFF"/>
+      <stop offset="100%" stop-color="#EFE3D4"/>
+    </linearGradient>
+    <linearGradient id="table" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#E6D6BF"/>
+      <stop offset="55%" stop-color="#DCC8AD"/>
+      <stop offset="100%" stop-color="#CDB392"/>
+    </linearGradient>
+    <filter id="soft" x="-25%" y="-25%" width="150%" height="150%">
+      <feGaussianBlur stdDeviation="16"/>
+    </filter>
+    <filter id="grain">
+      <feTurbulence type="fractalNoise" baseFrequency="0.9" numOctaves="3"/>
+      <feColorMatrix type="saturate" values="0"/>
+    </filter>
+  </defs>
+
+  <!-- Table surface -->
+  <rect width="800" height="640" fill="url(#table)"/>
+  <g opacity="0.16">
+    <path d="M0 90 Q400 60 800 100" stroke="#A98A63" stroke-width="3" fill="none"/>
+    <path d="M0 250 Q400 222 800 262" stroke="#A98A63" stroke-width="2" fill="none"/>
+    <path d="M0 430 Q400 404 800 446" stroke="#A98A63" stroke-width="3" fill="none"/>
+    <path d="M0 570 Q400 546 800 586" stroke="#A98A63" stroke-width="2" fill="none"/>
+  </g>
+  <rect width="800" height="640" filter="url(#grain)" opacity="0.05"/>
+
+  <!-- Cup shadow -->
+  <ellipse cx="356" cy="360" rx="212" ry="200" fill="#8A6C46" opacity="0.28" filter="url(#soft)"/>
+
+  <!-- Saucer -->
+  <circle cx="340" cy="330" r="212" fill="url(#cupRim)"/>
+  <circle cx="340" cy="330" r="212" fill="none" stroke="#E0D0BC" stroke-width="2"/>
+  <circle cx="340" cy="330" r="186" fill="none" stroke="#EADCC9" stroke-width="3"/>
+
+  <!-- Cup body -->
+  <circle cx="340" cy="326" r="160" fill="#FFFFFF"/>
+  <circle cx="340" cy="326" r="160" fill="none" stroke="#E6D8C6" stroke-width="2"/>
+  <circle cx="340" cy="326" r="142" fill="#F6EEE3"/>
+
+  <!-- Coffee -->
+  <circle cx="340" cy="326" r="136" fill="url(#crema)"/>
+  <circle cx="340" cy="326" r="136" fill="none" stroke="#5E3A1F" stroke-width="2" opacity="0.35"/>
+
+  <!-- Latte art: heart -->
+  <path d="M340 404 C 288 366, 262 330, 276 300 C 288 274, 322 274, 340 300
+           C 358 274, 392 274, 404 300 C 418 330, 392 366, 340 404 Z"
+        fill="#FBF3E7" opacity="0.96"/>
+  <path d="M340 404 C 315 386, 296 366, 288 346" stroke="#EADCC9" stroke-width="3" fill="none" opacity="0.5" stroke-linecap="round"/>
+
+  <!-- Cup handle -->
+  <path d="M498 288 a 56 56 0 0 1 0 78" stroke="#FFFFFF" stroke-width="30" fill="none" stroke-linecap="round"/>
+  <path d="M498 288 a 56 56 0 0 1 0 78" stroke="#E6D8C6" stroke-width="2" fill="none" stroke-linecap="round"/>
+
+  <!-- Scattered beans -->
+  <g fill="#4A2F21">
+    <g transform="translate(646 138) rotate(-24)">
+      <ellipse rx="21" ry="14"/>
+      <path d="M0 -13 C 6 -5, 6 5, 0 13" stroke="#7A5334" stroke-width="2.5" fill="none"/>
+    </g>
+    <g transform="translate(700 210) rotate(38)">
+      <ellipse rx="19" ry="13"/>
+      <path d="M0 -12 C 6 -4, 6 4, 0 12" stroke="#7A5334" stroke-width="2.5" fill="none"/>
+    </g>
+    <g transform="translate(614 232) rotate(12)">
+      <ellipse rx="17" ry="11"/>
+      <path d="M0 -10 C 5 -3, 5 3, 0 10" stroke="#7A5334" stroke-width="2.2" fill="none"/>
+    </g>
+    <g transform="translate(158 566) rotate(-44)">
+      <ellipse rx="20" ry="13"/>
+      <path d="M0 -12 C 6 -4, 6 4, 0 12" stroke="#7A5334" stroke-width="2.5" fill="none"/>
+    </g>
+    <g transform="translate(228 588) rotate(16)">
+      <ellipse rx="17" ry="11"/>
+      <path d="M0 -10 C 5 -3, 5 3, 0 10" stroke="#7A5334" stroke-width="2.2" fill="none"/>
+    </g>
+  </g>
+
+  <!-- Small pastry plate, top right -->
+  <g transform="translate(672 452)">
+    <circle r="104" fill="#8A6C46" opacity="0.2" filter="url(#soft)"/>
+    <circle r="98" fill="#FFF8EF"/>
+    <circle r="98" fill="none" stroke="#E6D8C6" stroke-width="2"/>
+    <circle r="80" fill="none" stroke="#EFE3D4" stroke-width="3"/>
+    <path d="M-52 6 C -46 -40, -14 -60, 6 -50 C 30 -62, 62 -38, 58 4 C 54 40, 6 56, -20 44 C -42 34, -54 26, -52 6 Z" fill="#C89A4A"/>
+    <path d="M-36 2 C -30 -28, -8 -42, 6 -36 C 24 -44, 46 -28, 42 2 C 38 28, 4 38, -14 30 C -30 22, -38 16, -36 2 Z" fill="#D9AF66"/>
+    <path d="M-16 -34 C -6 -14, -6 8, -14 26" stroke="#B4823A" stroke-width="3" fill="none" stroke-linecap="round"/>
+    <path d="M14 -36 C 24 -14, 24 8, 16 28" stroke="#B4823A" stroke-width="3" fill="none" stroke-linecap="round"/>
+  </g>
+</svg>

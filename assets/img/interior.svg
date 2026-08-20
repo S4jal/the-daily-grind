@@ -1,0 +1,146 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 600" role="img" aria-label="Illustration of the cafe counter with an espresso machine and pendant lights">
+  <defs>
+    <linearGradient id="wall" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#F4E9DA"/>
+      <stop offset="100%" stop-color="#EADCC9"/>
+    </linearGradient>
+    <linearGradient id="counterTop" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="#8A5A34"/>
+      <stop offset="50%" stop-color="#A06B3E"/>
+      <stop offset="100%" stop-color="#7E5130"/>
+    </linearGradient>
+    <linearGradient id="machine" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#E9E2D8"/>
+      <stop offset="100%" stop-color="#C9BDAE"/>
+    </linearGradient>
+    <radialGradient id="glow" cx="50%" cy="0%" r="80%">
+      <stop offset="0%" stop-color="#F7D89A" stop-opacity="0.75"/>
+      <stop offset="100%" stop-color="#F7D89A" stop-opacity="0"/>
+    </radialGradient>
+  </defs>
+
+  <rect width="800" height="600" fill="url(#wall)"/>
+
+  <!-- Wall panelling -->
+  <g stroke="#E0CDB2" stroke-width="2" opacity="0.7">
+    <path d="M0 96 H800 M0 176 H800"/>
+  </g>
+
+  <!-- Shelves with beans and cups -->
+  <g>
+    <rect x="80" y="150" width="230" height="10" rx="4" fill="#6E4324"/>
+    <g fill="#B4592A">
+      <rect x="104" y="112" width="30" height="38" rx="4"/>
+      <rect x="146" y="120" width="26" height="30" rx="4" fill="#C89A4A"/>
+      <rect x="184" y="106" width="34" height="44" rx="4" fill="#6F7F63"/>
+      <rect x="230" y="118" width="28" height="32" rx="4"/>
+      <rect x="268" y="124" width="24" height="26" rx="4" fill="#C89A4A"/>
+    </g>
+
+    <rect x="500" y="150" width="220" height="10" rx="4" fill="#6E4324"/>
+    <g fill="#FFF8EF" stroke="#E0CDB2" stroke-width="1.5">
+      <path d="M520 150 v-22 a12 12 0 0 1 12-12 h16 a12 12 0 0 1 12 12 v22 Z"/>
+      <path d="M576 150 v-22 a12 12 0 0 1 12-12 h16 a12 12 0 0 1 12 12 v22 Z"/>
+      <path d="M632 150 v-22 a12 12 0 0 1 12-12 h16 a12 12 0 0 1 12 12 v22 Z"/>
+      <path d="M688 150 v-22 a12 12 0 0 1 12-12 h16 a12 12 0 0 1 12 12 v22 Z"/>
+    </g>
+  </g>
+
+  <!-- Pendant lights -->
+  <g>
+    <path d="M240 0 V64 M400 0 V44 M560 0 V64" stroke="#3A281C" stroke-width="3"/>
+    <path d="M212 64 h56 l16 34 a 44 44 0 0 1 -88 0 Z" fill="#B4592A"/>
+    <path d="M372 44 h56 l16 34 a 44 44 0 0 1 -88 0 Z" fill="#C89A4A"/>
+    <path d="M532 64 h56 l16 34 a 44 44 0 0 1 -88 0 Z" fill="#B4592A"/>
+    <ellipse cx="240" cy="106" rx="30" ry="8" fill="#F7D89A"/>
+    <ellipse cx="400" cy="86" rx="30" ry="8" fill="#F7D89A"/>
+    <ellipse cx="560" cy="106" rx="30" ry="8" fill="#F7D89A"/>
+    <ellipse cx="240" cy="180" rx="96" ry="90" fill="url(#glow)"/>
+    <ellipse cx="400" cy="160" rx="96" ry="90" fill="url(#glow)"/>
+    <ellipse cx="560" cy="180" rx="96" ry="90" fill="url(#glow)"/>
+  </g>
+
+  <!-- Menu board -->
+  <g transform="translate(330 178)">
+    <rect width="140" height="104" rx="6" fill="#2B1C13"/>
+    <rect x="8" y="8" width="124" height="88" rx="4" fill="none" stroke="#C89A4A" stroke-width="1.5"/>
+    <g stroke="#FBF3E7" stroke-width="2.5" opacity="0.7" stroke-linecap="round">
+      <path d="M24 32 H92 M24 48 H108 M24 64 H80 M24 80 H100"/>
+    </g>
+  </g>
+
+  <!-- Counter -->
+  <rect x="60" y="392" width="680" height="26" rx="8" fill="url(#counterTop)"/>
+  <rect x="72" y="418" width="656" height="122" fill="#E7D8C2"/>
+  <g stroke="#D8C4A8" stroke-width="2">
+    <path d="M180 418 V540 M300 418 V540 M420 418 V540 M540 418 V540 M660 418 V540"/>
+  </g>
+  <rect x="60" y="536" width="680" height="12" rx="4" fill="#6E4324"/>
+
+  <!-- Espresso machine -->
+  <g transform="translate(452 288)">
+    <rect x="0" y="24" width="180" height="80" rx="10" fill="url(#machine)"/>
+    <rect x="0" y="24" width="180" height="80" rx="10" fill="none" stroke="#A99C8C" stroke-width="2"/>
+    <rect x="14" y="0" width="152" height="30" rx="8" fill="#B4592A"/>
+    <rect x="26" y="8" width="128" height="14" rx="4" fill="#8F4420"/>
+    <circle cx="46" cy="52" r="11" fill="#3A281C"/>
+    <circle cx="46" cy="52" r="5" fill="#C89A4A"/>
+    <circle cx="134" cy="52" r="11" fill="#3A281C"/>
+    <circle cx="134" cy="52" r="5" fill="#C89A4A"/>
+    <!-- group heads -->
+    <rect x="70" y="60" width="16" height="26" rx="3" fill="#8A7C6C"/>
+    <rect x="96" y="60" width="16" height="26" rx="3" fill="#8A7C6C"/>
+    <rect x="62" y="86" width="32" height="6" rx="3" fill="#6E6255"/>
+    <rect x="88" y="86" width="32" height="6" rx="3" fill="#6E6255"/>
+    <!-- steam wand -->
+    <path d="M176 44 q 22 16, 14 44" stroke="#8A7C6C" stroke-width="5" fill="none" stroke-linecap="round"/>
+    <!-- cups on top -->
+    <g fill="#FFF8EF" stroke="#DACBB8" stroke-width="1.5">
+      <rect x="34" y="-14" width="20" height="14" rx="3"/>
+      <rect x="62" y="-14" width="20" height="14" rx="3"/>
+      <rect x="98" y="-14" width="20" height="14" rx="3"/>
+      <rect x="126" y="-14" width="20" height="14" rx="3"/>
+    </g>
+  </g>
+
+  <!-- Pastry case -->
+  <g transform="translate(120 316)">
+    <rect width="190" height="76" rx="8" fill="#FFF8EF" opacity="0.62"/>
+    <rect width="190" height="76" rx="8" fill="none" stroke="#C9BDAE" stroke-width="3"/>
+    <rect x="10" y="42" width="170" height="8" rx="3" fill="#D8C4A8"/>
+    <g>
+      <circle cx="44" cy="30" r="14" fill="#C89A4A"/>
+      <circle cx="80" cy="32" r="12" fill="#D9AF66"/>
+      <circle cx="116" cy="29" r="15" fill="#B4592A"/>
+      <circle cx="152" cy="32" r="12" fill="#C89A4A"/>
+    </g>
+    <g>
+      <circle cx="52" cy="64" r="11" fill="#D9AF66"/>
+      <circle cx="92" cy="65" r="10" fill="#C89A4A"/>
+      <circle cx="132" cy="64" r="11" fill="#8A5A34"/>
+    </g>
+  </g>
+
+  <!-- Counter details: register, tip jar, plant -->
+  <g transform="translate(330 340)">
+    <rect x="0" y="18" width="54" height="34" rx="5" fill="#3A281C"/>
+    <rect x="8" y="-6" width="38" height="28" rx="4" fill="#55665D"/>
+    <rect x="8" y="-6" width="38" height="28" rx="4" fill="none" stroke="#3A281C" stroke-width="3"/>
+  </g>
+  <g transform="translate(408 356)">
+    <path d="M0 8 h30 l-4 30 h-22 Z" fill="#FFF8EF" opacity="0.85"/>
+    <path d="M0 8 h30 l-4 30 h-22 Z" fill="none" stroke="#DACBB8" stroke-width="2"/>
+    <rect x="4" y="20" width="22" height="18" fill="#6F7F63" opacity="0.55"/>
+  </g>
+  <g transform="translate(682 344)">
+    <rect x="0" y="30" width="34" height="22" rx="4" fill="#B4592A"/>
+    <path d="M17 30 C 2 8, 0 -6, 10 -14 C 16 0, 20 14, 17 30 Z" fill="#6F7F63"/>
+    <path d="M17 30 C 33 10, 36 -4, 27 -13 C 20 1, 15 14, 17 30 Z" fill="#7F8F72"/>
+  </g>
+
+  <!-- Floor -->
+  <rect x="0" y="548" width="800" height="52" fill="#D8C4A8"/>
+  <g stroke="#C9B396" stroke-width="2">
+    <path d="M80 548 V600 M240 548 V600 M400 548 V600 M560 548 V600 M720 548 V600"/>
+  </g>
+</svg>
