@@ -2,9 +2,12 @@
    The Daily Grind — site scripts
    No dependencies, no build step. Loaded with `defer` on every page.
 
-   >>> TO UPDATE OPENING HOURS, EDIT THE `HOURS` TABLE BELOW. <<<
-       It drives the live "Open now / Closed" badge in the header AND the
-       hours table on the Hours & Location page. One edit, both places.
+   >>> OPENING HOURS AND MENU CONTENT NOW LIVE IN js/site-data.js <<<
+       That file is shared with the admin dashboard at /admin, so anything
+       the client changes there shows up here. This file only reads.
+
+       The FALLBACK_HOURS below exist purely so the site still works if
+       site-data.js fails to load.
    ========================================================================== */
 (function () {
   'use strict';
@@ -12,13 +15,13 @@
   document.documentElement.classList.remove('no-js');
 
   /* ------------------------------------------------------------------------
-     1. Opening hours — single source of truth
-        24h "HH:MM" strings. Use `null` for a day the shop is closed.
+     1. Opening hours — read through the shared data layer
+        24h "HH:MM" strings. `null` means closed that day.
         Index 0 = Sunday ... 6 = Saturday.
      ---------------------------------------------------------------------- */
   var TIMEZONE = 'America/Los_Angeles';
 
-  var HOURS = [
+  var FALLBACK_HOURS = [
     { day: 'Sunday',    open: '07:00', close: '17:00' },
     { day: 'Monday',    open: '06:30', close: '18:00' },
     { day: 'Tuesday',   open: '06:30', close: '18:00' },
@@ -27,6 +30,17 @@
     { day: 'Friday',    open: '06:30', close: '19:00' },
     { day: 'Saturday',  open: '07:00', close: '19:00' }
   ];
+
+  /** Current hours: whatever the dashboard saved, else the built-in defaults. */
+  function hours() {
+    if (window.TDG && typeof window.TDG.getHours === 'function') {
+      try {
+        var h = window.TDG.getHours();
+        if (h && h.length === 7) { return h; }
+      } catch (err) { /* fall through */ }
+    }
+    return FALLBACK_HOURS;
+  }
 
   /* ------------------------------------------------------------------------
      2. Small helpers
@@ -80,7 +94,8 @@
   /** -> { open: Boolean, text: String } */
   function openStatus() {
     var now = shopNow();
-    var today = HOURS[now.day];
+    var week = hours();
+    var today = week[now.day];
 
     if (today && today.open) {
       var opensAt = toMinutes(today.open);
@@ -96,7 +111,7 @@
 
     // Closed for the day — find the next day we open.
     for (var i = 1; i <= 7; i++) {
-      var next = HOURS[(now.day + i) % 7];
+      var next = week[(now.day + i) % 7];
       if (next && next.open) {
         var when = i === 1 ? 'tomorrow' : next.day;
         return { open: false, text: 'Closed · opens ' + when + ' ' + pretty(next.open) };
@@ -129,7 +144,7 @@
 
     var todayIndex = shopNow().day;
 
-    table.innerHTML = HOURS.map(function (entry, i) {
+    table.innerHTML = hours().map(function (entry, i) {
       var value = entry.open
         ? pretty(entry.open) + ' – ' + pretty(entry.close)
         : 'Closed';
@@ -138,6 +153,67 @@
                '<td>' + value + '</td>' +
              '</tr>';
     }).join('');
+
+    // Holiday/kitchen note, if the dashboard changed it.
+    var note = document.querySelector('[data-holiday-note]');
+    if (note && window.TDG && window.TDG.hasOverride()) {
+      var text = window.TDG.getHolidayNote();
+      if (text) { note.textContent = text; }
+    }
+  }
+
+  /* ------------------------------------------------------------------------
+     4b. Menu — re-render from saved dashboard content
+         The static HTML in menu.html stays the source of truth for search
+         engines and for a first-time visitor. We only rebuild the list when
+         the client has actually saved changes in /admin.
+     ---------------------------------------------------------------------- */
+  function renderMenuOverride() {
+    var root = document.querySelector('[data-menu-root]');
+    if (!root || !window.TDG || !window.TDG.hasOverride()) { return; }
+
+    var data;
+    try { data = window.TDG.getMenu(); } catch (err) { return; }
+    if (!data || !data.categories || !data.items) { return; }
+
+    function esc(s) {
+      return String(s == null ? '' : s)
+        .replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;')
+        .replace(/"/g, '&quot;');
+    }
+
+    var html = data.categories.map(function (cat) {
+      var items = data.items.filter(function (i) {
+        return i.category === cat.id && i.available;
+      });
+      if (!items.length) { return ''; }
+
+      var lis = items.map(function (it) {
+        var tags = (it.tags || []).map(function (t) {
+          return '<span class="tag' + (t.style === 'gold' ? ' tag--gold' : '') + '">' +
+                 esc(t.label) + '</span>';
+        }).join('');
+        return '<li class="menu-item">' +
+                 '<div class="menu-item__row">' +
+                   '<span class="menu-item__name">' + esc(it.name) + '</span>' +
+                   '<span class="menu-item__dots" aria-hidden="true"></span>' +
+                   '<span class="menu-item__price">' + window.TDG.money(it.price) + '</span>' +
+                 '</div>' +
+                 (it.desc ? '<p class="menu-item__desc">' + esc(it.desc) + '</p>' : '') +
+                 (tags ? '<div class="menu-item__tags">' + tags + '</div>' : '') +
+               '</li>';
+      }).join('');
+
+      return '<section class="menu-group" data-category="' + esc(cat.id) + '">' +
+               '<div class="menu-group__head">' +
+                 '<h2>' + esc(cat.name) + '</h2>' +
+                 '<span class="menu-group__note">' + esc(cat.note || '') + '</span>' +
+               '</div>' +
+               '<ul class="menu-list">' + lis + '</ul>' +
+             '</section>';
+    }).filter(Boolean).join('');
+
+    if (html) { root.innerHTML = html; }
   }
 
   /* ------------------------------------------------------------------------
@@ -348,6 +424,7 @@
      ---------------------------------------------------------------------- */
   renderStatusBadges();
   renderHoursTable();
+  renderMenuOverride();   // must run before initMenuFilter/initReveal bind
   initNav();
   initStickyHeader();
   initReveal();

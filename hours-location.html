@@ -27,6 +27,7 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400..700;1,9..144,400..700&family=Inter:wght@400;500;600;700&display=swap">
 <link rel="stylesheet" href="css/styles.css">
+<script src="js/site-data.js" defer></script>
 <script src="js/main.js" defer></script>
 
 <script type="application/ld+json">
@@ -120,7 +121,7 @@
         <table class="hours-table" style="margin-top:1.5rem">
           <caption class="sr-only">Opening hours for The Daily Grind, by day of the week</caption>
           <tbody data-hours-table>
-            <!-- Filled by js/main.js from the HOURS table — edit hours there. -->
+            <!-- Filled by js/main.js from js/site-data.js (edited via /admin). -->
             <tr><th scope="row">Sunday</th><td>7:00am – 5:00pm</td></tr>
             <tr><th scope="row">Monday</th><td>6:30am – 6:00pm</td></tr>
             <tr><th scope="row">Tuesday</th><td>6:30am – 6:00pm</td></tr>
@@ -131,7 +132,7 @@
           </tbody>
         </table>
 
-        <p class="field__hint" style="margin-top:1.25rem">
+        <p class="field__hint" style="margin-top:1.25rem" data-holiday-note>
           The kitchen stops at 2pm daily. We close on Thanksgiving, Christmas Day, and New Year's Day —
           holiday hours are always posted on the door and on Instagram.
         </p>

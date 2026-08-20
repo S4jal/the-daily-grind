@@ -23,6 +23,7 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400..700;1,9..144,400..700&family=Inter:wght@400;500;600;700&display=swap">
 <link rel="stylesheet" href="css/styles.css">
+<script src="js/site-data.js" defer></script>
 <script src="js/main.js" defer></script>
 
 <script type="application/ld+json">
@@ -105,6 +106,13 @@
         <button class="chip" type="button" data-filter="bakery" aria-pressed="false">Bakery</button>
         <button class="chip" type="button" data-filter="kitchen" aria-pressed="false">Kitchen</button>
       </div>
+
+      <!--
+        The static markup below is the source of truth for search engines and
+        first-time visitors. If the client has saved changes in /admin,
+        js/main.js replaces the contents of this wrapper on load.
+      -->
+      <div data-menu-root>
 
       <!-- ============ ESPRESSO ============ -->
       <section class="menu-group" data-category="espresso" data-reveal>
@@ -266,6 +274,8 @@
           </li>
         </ul>
       </section>
+
+      </div><!-- /[data-menu-root] -->
 
       <p style="text-align:center;font-size:.9375rem;color:var(--c-ink-mute);max-width:60ch;margin:0 auto">
         Oat, almond, and lactose-free milk at no extra charge. Please tell us about allergies —

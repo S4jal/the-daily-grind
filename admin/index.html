@@ -1,0 +1,465 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<title>Dashboard | The Daily Grind Admin</title>
+
+<link rel="icon" href="../assets/img/favicon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400..700&family=Inter:wght@400;500;600;700&display=swap">
+<link rel="stylesheet" href="css/admin.css">
+
+<script src="../js/site-data.js" defer></script>
+<script src="js/admin.js" defer></script>
+</head>
+
+<body>
+
+<!-- ==================== SVG icon sprite ==================== -->
+<svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false">
+  <defs>
+    <symbol id="i-grid" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+      <rect x="3" y="3" width="7" height="7" rx="1.5"/><rect x="14" y="3" width="7" height="7" rx="1.5"/>
+      <rect x="3" y="14" width="7" height="7" rx="1.5"/><rect x="14" y="14" width="7" height="7" rx="1.5"/>
+    </symbol>
+    <symbol id="i-menu" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M4 8h13v6a6 6 0 0 1-6 6h-1a6 6 0 0 1-6-6V8Z"/><path d="M17 10h2a3 3 0 0 1 0 6h-2"/>
+      <path d="M8 5c1-1-1-2 0-3M12 5c1-1-1-2 0-3"/>
+    </symbol>
+    <symbol id="i-clock" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+      <circle cx="12" cy="12" r="9"/><path d="M12 7v5l3.5 2"/>
+    </symbol>
+    <symbol id="i-export" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M12 15V3m0 0L8 7m4-4 4 4"/><path d="M4 15v4a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-4"/>
+    </symbol>
+    <symbol id="i-plus" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round">
+      <path d="M12 5v14M5 12h14"/>
+    </symbol>
+    <symbol id="i-edit" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M4 20h4L19 9a2.8 2.8 0 0 0-4-4L4 16v4Z"/><path d="M14.5 6.5 17.5 9.5"/>
+    </symbol>
+    <symbol id="i-trash" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M4 7h16M9 7V5a1 1 0 0 1 1-1h4a1 1 0 0 1 1 1v2"/>
+      <path d="M6 7v12a2 2 0 0 0 2 2h8a2 2 0 0 0 2-2V7M10 11v6M14 11v6"/>
+    </symbol>
+    <symbol id="i-eye" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M2 12s3.6-6.5 10-6.5S22 12 22 12s-3.6 6.5-10 6.5S2 12 2 12Z"/><circle cx="12" cy="12" r="2.8"/>
+    </symbol>
+    <symbol id="i-eye-off" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M4 4l16 16"/><path d="M9.5 6C10.3 5.8 11.1 5.7 12 5.7c6.4 0 10 6.3 10 6.3a17 17 0 0 1-3.5 4.1"/>
+      <path d="M6.4 8A17 17 0 0 0 2 12s3.6 6.3 10 6.3c1.3 0 2.4-.2 3.4-.6"/>
+    </symbol>
+    <symbol id="i-up" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round">
+      <path d="m6 15 6-6 6 6"/>
+    </symbol>
+    <symbol id="i-down" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round">
+      <path d="m6 9 6 6 6-6"/>
+    </symbol>
+    <symbol id="i-search" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round">
+      <circle cx="11" cy="11" r="6.5"/><path d="m16 16 4.5 4.5"/>
+    </symbol>
+    <symbol id="i-close" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round">
+      <path d="M6 6l12 12M18 6 6 18"/>
+    </symbol>
+    <symbol id="i-check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+      <path d="m5 13 4.5 4.5L19 7"/>
+    </symbol>
+    <symbol id="i-info" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+      <circle cx="12" cy="12" r="9"/><path d="M12 11v5M12 8h.01"/>
+    </symbol>
+    <symbol id="i-alert" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M12 4 2.5 20h19L12 4Z"/><path d="M12 10v4M12 17h.01"/>
+    </symbol>
+    <symbol id="i-save" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M5 3h11l3 3v15H5Z"/><path d="M8 3v6h7V3M8 17h8"/>
+    </symbol>
+    <symbol id="i-out" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M14 3h5v18h-5"/><path d="M10 8 5 12l5 4M5 12h9"/>
+    </symbol>
+    <symbol id="i-bars" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round">
+      <path d="M4 7h16M4 12h16M4 17h16"/>
+    </symbol>
+    <symbol id="i-reset" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M20 12a8 8 0 1 1-2.3-5.7"/><path d="M20 4v5h-5"/>
+    </symbol>
+    <symbol id="i-copy" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+      <rect x="9" y="9" width="12" height="12" rx="2"/><path d="M5 15H4a1 1 0 0 1-1-1V4a1 1 0 0 1 1-1h10a1 1 0 0 1 1 1v1"/>
+    </symbol>
+    <symbol id="i-tray" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M3 14h5l1.5 3h5L16 14h5"/><path d="M4.5 14 6 5h12l1.5 9v5a1 1 0 0 1-1 1H5.5a1 1 0 0 1-1-1Z"/>
+    </symbol>
+  </defs>
+</svg>
+
+<!-- ==================== LOGIN GATE (demo) ==================== -->
+<div class="gate" id="gate">
+  <div class="gate__card">
+    <div class="gate__brand">
+      <svg viewBox="0 0 64 64" aria-hidden="true">
+        <rect width="64" height="64" rx="14" fill="#2B1C13"/>
+        <path d="M14 24h30v14a13 13 0 0 1-13 13h-4a13 13 0 0 1-13-13V24Z" fill="#FBF3E7"/>
+        <path d="M44 27h4a7 7 0 0 1 0 14h-4" fill="none" stroke="#FBF3E7" stroke-width="4" stroke-linecap="round"/>
+        <path d="M14 24h30v6H14z" fill="#B4592A"/>
+        <path d="M18 52h28" stroke="#C89A4A" stroke-width="4" stroke-linecap="round"/>
+      </svg>
+      <span><b>The Daily Grind</b><span>Admin</span></span>
+    </div>
+
+    <h1>Sign in</h1>
+    <p>Manage your menu and opening hours.</p>
+
+    <form id="gate-form" novalidate>
+      <div class="field">
+        <label for="gate-user">Email</label>
+        <input type="text" id="gate-user" value="hello@thedailygrind.cafe" autocomplete="username">
+      </div>
+      <div class="field">
+        <label for="gate-pass">Password</label>
+        <input type="password" id="gate-pass" placeholder="Anything at all" autocomplete="current-password">
+      </div>
+      <button class="btn btn--primary" type="submit">Sign in to dashboard</button>
+    </form>
+
+    <p class="gate__note">
+      <strong>Demo screen only — there is no real authentication here.</strong>
+      Any input signs you in, and nothing is sent anywhere. Real login arrives with the
+      backend; until then, do not put this folder on a public server.
+    </p>
+  </div>
+</div>
+
+<!-- ==================== APP ==================== -->
+<div class="app" id="app" hidden>
+
+  <div class="scrim" id="scrim" hidden></div>
+
+  <!-- ---------- Sidebar ---------- -->
+  <aside class="sidebar" id="sidebar">
+    <a class="sidebar__brand" href="../index.html">
+      <svg viewBox="0 0 64 64" aria-hidden="true">
+        <rect width="64" height="64" rx="14" fill="#3A281C"/>
+        <path d="M14 24h30v14a13 13 0 0 1-13 13h-4a13 13 0 0 1-13-13V24Z" fill="#FBF3E7"/>
+        <path d="M44 27h4a7 7 0 0 1 0 14h-4" fill="none" stroke="#FBF3E7" stroke-width="4" stroke-linecap="round"/>
+        <path d="M14 24h30v6H14z" fill="#B4592A"/>
+      </svg>
+      <span><b>The Daily Grind</b><span>Admin</span></span>
+    </a>
+
+    <p class="sidebar__label">Manage</p>
+    <nav class="sidebar__nav" aria-label="Dashboard sections">
+      <button class="nav-btn is-active" type="button" data-view="overview">
+        <svg aria-hidden="true"><use href="#i-grid"/></svg> Overview
+      </button>
+      <button class="nav-btn" type="button" data-view="menu">
+        <svg aria-hidden="true"><use href="#i-menu"/></svg> Menu
+        <span class="nav-btn__count" data-count-items>0</span>
+      </button>
+      <button class="nav-btn" type="button" data-view="hours">
+        <svg aria-hidden="true"><use href="#i-clock"/></svg> Hours
+      </button>
+      <button class="nav-btn" type="button" data-view="export">
+        <svg aria-hidden="true"><use href="#i-export"/></svg> Export
+      </button>
+    </nav>
+
+    <div class="sidebar__foot">
+      <a class="nav-btn" href="../index.html" target="_blank" rel="noopener">
+        <svg aria-hidden="true"><use href="#i-eye"/></svg> View live site
+      </a>
+      <button class="nav-btn" type="button" id="sign-out">
+        <svg aria-hidden="true"><use href="#i-out"/></svg> Sign out
+      </button>
+    </div>
+  </aside>
+
+  <!-- ---------- Main ---------- -->
+  <div class="main">
+    <div class="demo-bar">
+      Demo build — changes save to this browser only (localStorage), not to a server.
+    </div>
+
+    <header class="topbar">
+      <button class="menu-toggle" type="button" id="menu-toggle" aria-label="Open navigation" aria-expanded="false">
+        <svg aria-hidden="true"><use href="#i-bars"/></svg>
+      </button>
+      <div>
+        <div class="topbar__title" id="page-title">Overview</div>
+        <div class="topbar__sub" id="page-sub">What's live on the site right now</div>
+      </div>
+      <div class="topbar__actions">
+        <span class="dot-unsaved" id="unsaved" hidden>Unsaved changes</span>
+        <button class="btn btn--ghost btn--sm" type="button" id="discard" hidden>Discard</button>
+        <button class="btn btn--primary" type="button" id="save" disabled>
+          <svg aria-hidden="true"><use href="#i-save"/></svg> Save changes
+        </button>
+      </div>
+    </header>
+
+    <div class="content">
+
+      <!-- ============ OVERVIEW ============ -->
+      <section class="view" id="view-overview">
+        <div class="stat-grid">
+          <div class="stat">
+            <div class="stat__label">Menu items</div>
+            <div class="stat__value" data-stat="items">0</div>
+            <div class="stat__meta" data-stat="items-meta">across 5 categories</div>
+          </div>
+          <div class="stat">
+            <div class="stat__label">Available now</div>
+            <div class="stat__value" data-stat="available">0</div>
+            <div class="stat__meta" data-stat="available-meta">nothing marked sold out</div>
+          </div>
+          <div class="stat">
+            <div class="stat__label">Today</div>
+            <div class="stat__value" data-stat="today">—</div>
+            <div class="stat__meta" data-stat="today-meta">&nbsp;</div>
+          </div>
+          <div class="stat">
+            <div class="stat__label">Last saved</div>
+            <div class="stat__value" data-stat="saved" style="font-size:19px;line-height:1.35">Never</div>
+            <div class="stat__meta" data-stat="saved-meta">showing default content</div>
+          </div>
+        </div>
+
+        <div class="panel" style="margin-bottom:20px">
+          <div class="panel__head">
+            <div>
+              <h2>Quick actions</h2>
+              <p>The two things you'll do most often</p>
+            </div>
+          </div>
+          <div class="panel__body" style="display:flex;gap:10px;flex-wrap:wrap">
+            <button class="btn btn--primary" type="button" data-goto="menu" data-add="1">
+              <svg aria-hidden="true"><use href="#i-plus"/></svg> Add a menu item
+            </button>
+            <button class="btn btn--ghost" type="button" data-goto="hours">
+              <svg aria-hidden="true"><use href="#i-clock"/></svg> Change opening hours
+            </button>
+            <a class="btn btn--ghost" href="../menu.html" target="_blank" rel="noopener">
+              <svg aria-hidden="true"><use href="#i-eye"/></svg> Preview the menu page
+            </a>
+          </div>
+        </div>
+
+        <div class="panel">
+          <div class="panel__head"><div><h2>How this works</h2></div></div>
+          <div class="panel__body" style="display:grid;gap:14px">
+            <div class="help">
+              <svg aria-hidden="true"><use href="#i-info"/></svg>
+              <div>
+                <strong>Changes save to this browser.</strong> Edit anything, press
+                <em>Save changes</em>, then open the public site in the same browser — your menu and
+                hours will be there. Another computer will still see the original content until the
+                backend is connected.
+              </div>
+            </div>
+            <div class="help">
+              <svg aria-hidden="true"><use href="#i-export"/></svg>
+              <div>
+                <strong>Need it live for everyone today?</strong> Go to <em>Export</em>, copy the
+                generated code, and paste it into the site files. That makes changes permanent for
+                every visitor without a server.
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ============ MENU ============ -->
+      <section class="view" id="view-menu" hidden>
+        <div class="toolbar">
+          <div class="search">
+            <svg aria-hidden="true"><use href="#i-search"/></svg>
+            <input type="search" id="menu-search" placeholder="Search items…" aria-label="Search menu items">
+          </div>
+          <div class="seg" id="cat-filter" role="group" aria-label="Filter by category"></div>
+          <button class="btn btn--primary" type="button" id="add-item" style="margin-left:auto">
+            <svg aria-hidden="true"><use href="#i-plus"/></svg> Add item
+          </button>
+        </div>
+
+        <div id="menu-list"></div>
+
+        <div class="empty" id="menu-empty" hidden>
+          <svg aria-hidden="true"><use href="#i-tray"/></svg>
+          <strong>Nothing here</strong>
+          <span id="menu-empty-msg">No items match your search.</span>
+        </div>
+      </section>
+
+      <!-- ============ HOURS ============ -->
+      <section class="view" id="view-hours" hidden>
+        <div class="panel" style="margin-bottom:20px">
+          <div class="panel__head">
+            <div>
+              <h2>Opening hours</h2>
+              <p>Drives the hours table and the live “Open now” badge across the site</p>
+            </div>
+          </div>
+          <div class="panel__body">
+            <div id="hours-rows"></div>
+          </div>
+        </div>
+
+        <div class="panel">
+          <div class="panel__head">
+            <div>
+              <h2>Holiday &amp; kitchen note</h2>
+              <p>The small print under the hours table</p>
+            </div>
+          </div>
+          <div class="panel__body">
+            <div class="field">
+              <label for="holiday-note">Note</label>
+              <textarea id="holiday-note"></textarea>
+              <span class="field__hint">Plain text. Shown on the Hours &amp; Location page.</span>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ============ EXPORT ============ -->
+      <section class="view" id="view-export" hidden>
+        <div class="help" style="margin-bottom:20px">
+          <svg aria-hidden="true"><use href="#i-info"/></svg>
+          <div>
+            <strong>Make changes permanent for every visitor.</strong>
+            Until the backend exists, paste these blocks into the site files. Save your changes
+            first — export always reflects what is currently saved.
+          </div>
+        </div>
+
+        <div class="panel" style="margin-bottom:18px">
+          <div class="panel__head">
+            <div><h2>1. Opening hours</h2><p>Replace the <code>hours</code> array in <code>js/site-data.js</code></p></div>
+            <button class="btn btn--ghost btn--sm" type="button" data-copy="out-hours">
+              <svg aria-hidden="true"><use href="#i-copy"/></svg> Copy
+            </button>
+          </div>
+          <div class="panel__body"><pre class="code-block" id="out-hours"></pre></div>
+        </div>
+
+        <div class="panel" style="margin-bottom:18px">
+          <div class="panel__head">
+            <div><h2>2. Menu items</h2><p>Replace the <code>items</code> array in <code>js/site-data.js</code></p></div>
+            <button class="btn btn--ghost btn--sm" type="button" data-copy="out-items">
+              <svg aria-hidden="true"><use href="#i-copy"/></svg> Copy
+            </button>
+          </div>
+          <div class="panel__body"><pre class="code-block" id="out-items"></pre></div>
+        </div>
+
+        <div class="panel" style="margin-bottom:18px">
+          <div class="panel__head">
+            <div><h2>3. Menu page HTML</h2><p>Replace everything between the filter chips and the closing note in <code>menu.html</code></p></div>
+            <button class="btn btn--ghost btn--sm" type="button" data-copy="out-html">
+              <svg aria-hidden="true"><use href="#i-copy"/></svg> Copy
+            </button>
+          </div>
+          <div class="panel__body"><pre class="code-block" id="out-html"></pre></div>
+        </div>
+
+        <div class="panel">
+          <div class="panel__head">
+            <div><h2>Backup &amp; reset</h2><p>Download everything as JSON, or start over</p></div>
+          </div>
+          <div class="panel__body" style="display:flex;gap:10px;flex-wrap:wrap">
+            <button class="btn btn--ghost" type="button" id="download-json">
+              <svg aria-hidden="true"><use href="#i-export"/></svg> Download JSON backup
+            </button>
+            <button class="btn btn--danger" type="button" id="reset-all">
+              <svg aria-hidden="true"><use href="#i-reset"/></svg> Reset to original content
+            </button>
+          </div>
+        </div>
+      </section>
+
+    </div>
+  </div>
+</div>
+
+<!-- ==================== ITEM EDITOR MODAL ==================== -->
+<div class="modal" id="item-modal" hidden role="dialog" aria-modal="true" aria-labelledby="item-modal-title">
+  <div class="modal__card">
+    <div class="modal__head">
+      <h2 id="item-modal-title">Add menu item</h2>
+      <button class="icon-btn" type="button" data-close-modal aria-label="Close">
+        <svg aria-hidden="true"><use href="#i-close"/></svg>
+      </button>
+    </div>
+
+    <form id="item-form" novalidate>
+      <div class="modal__body">
+        <div class="form-grid">
+          <div class="form-grid form-grid--2">
+            <div class="field">
+              <label for="f-name">Item name <span style="color:var(--c-accent)">*</span></label>
+              <input type="text" id="f-name" placeholder="Flat White" maxlength="60">
+              <span class="field__err"></span>
+            </div>
+            <div class="field">
+              <label for="f-price">Price (USD) <span style="color:var(--c-accent)">*</span></label>
+              <input type="number" id="f-price" placeholder="4.75" step="0.05" min="0" max="999">
+              <span class="field__err"></span>
+            </div>
+          </div>
+
+          <div class="field">
+            <label for="f-cat">Category</label>
+            <select id="f-cat"></select>
+          </div>
+
+          <div class="field">
+            <label for="f-desc">Description</label>
+            <textarea id="f-desc" maxlength="180" placeholder="One short line — what makes it good."></textarea>
+            <span class="field__hint"><span id="f-desc-count">0</span>/180 characters</span>
+          </div>
+
+          <div class="field">
+            <label>Labels</label>
+            <div class="check-row" id="f-tags"></div>
+            <span class="field__hint">Shown as small badges on the public menu.</span>
+          </div>
+
+          <div class="field">
+            <label class="switch">
+              <input type="checkbox" id="f-available" checked>
+              <span class="switch__track"></span>
+              <span>Available — uncheck to show as sold out</span>
+            </label>
+          </div>
+        </div>
+      </div>
+
+      <div class="modal__foot">
+        <button class="btn btn--quiet" type="button" data-close-modal>Cancel</button>
+        <button class="btn btn--primary" type="submit" id="item-save">Add item</button>
+      </div>
+    </form>
+  </div>
+</div>
+
+<!-- ==================== CONFIRM MODAL ==================== -->
+<div class="modal" id="confirm-modal" hidden role="dialog" aria-modal="true" aria-labelledby="confirm-title">
+  <div class="modal__card modal__card--sm">
+    <div class="modal__head">
+      <h2 id="confirm-title">Are you sure?</h2>
+    </div>
+    <div class="modal__body">
+      <p id="confirm-body" style="font-size:14.5px">This can't be undone.</p>
+    </div>
+    <div class="modal__foot">
+      <button class="btn btn--ghost" type="button" data-close-modal>Cancel</button>
+      <button class="btn btn--danger" type="button" id="confirm-ok">Delete</button>
+    </div>
+  </div>
+</div>
+
+<div class="toasts" id="toasts" aria-live="polite"></div>
+
+</body>
+</html>
